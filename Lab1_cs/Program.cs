@@ -7,7 +7,8 @@ namespace Lab1_cs
     static void Main(string[] args)
     {
       // Zad1();
-      Zad2();
+      // Zad2();
+      Zad3();
     }
 
     static void Zad1()
@@ -94,6 +95,59 @@ namespace Lab1_cs
       {
         Console.WriteLine("Błąd: Niedozwolony kierunek konwersji.");
         return;
+      }
+    }
+
+    static void Zad3()
+    {
+      Console.WriteLine("Podaj liczbę ocen (>0) oraz kolejne oceny ucznia (wartości od 1 do 6) oddzielone spacją (np. 4 5 3 4 2): ");
+      string input = Console.ReadLine();
+
+      string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+      if (!int.TryParse(parts[0], out int length))
+      {
+        Console.WriteLine("Błąd: Niepoprawna liczba ocen do wprowadzenia.");
+        return;
+      }
+
+      if (parts.Length != (length + 1) || length == 0)
+      {
+        Console.WriteLine("Błąd: Niepoprawna ilość ocen.");
+        return;
+      }
+
+      int sum = 0;
+      int grade;
+
+      for (int i = 1; i <= length; i++)
+      {
+
+        if (int.TryParse(parts[i], out grade))
+        {
+          if (grade < 1 || grade > 6)
+          {
+            Console.WriteLine("Błąd: Niepoprawna wartość jednej z ocen.");
+            return;
+          }
+        }
+        else
+        {
+          Console.WriteLine("Błąd: Niepoprawna wartość jednej z ocen.");
+          return;
+        }
+
+        sum += grade;
+      }
+
+      double result = sum / (double)length;
+      if (result >= 3.0)
+      {  
+        Console.WriteLine($"Średnia: {result}\nUczeń zdał.");
+      }
+      else
+      {
+        Console.WriteLine($"Średnia: {result}\nUczeń nie zdał.");
       }
     }
   }
