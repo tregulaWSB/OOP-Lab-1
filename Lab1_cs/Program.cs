@@ -6,9 +6,24 @@ namespace Lab1_cs
   {
     static void Main(string[] args)
     {
-      // Zad1();
-      // Zad2();
-      Zad3();
+      Console.WriteLine("Wybierz zadanie (od 1 do 3):\n1 - Prosty kalkulator dwóch liczb\n2 - Konwerter temperatur (Celsjusz ↔ Fahrenheit)\n3 - Średnia ocen ucznia");
+
+      string zad = Console.ReadLine();
+
+      switch (zad)
+      {
+        case "1":
+          Zad1();
+          break;
+        case "2":
+          Zad2();
+          break;
+        case "3":
+          Zad3();
+          break;
+        default:
+          return;
+      }
     }
 
     static void Zad1()
