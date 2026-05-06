@@ -6,7 +6,8 @@ namespace Lab1_cs
   {
     static void Main(string[] args)
     {
-      Zad1();
+      // Zad1();
+      Zad2();
     }
 
     static void Zad1()
@@ -56,6 +57,42 @@ namespace Lab1_cs
       else
       {
         Console.WriteLine("Błąd: Niepoprawny znak operacji.");
+        return;
+      }
+    }
+
+    static void Zad2()
+    {
+      Console.WriteLine("Podaj kierunek konwersji oraz wartość temperatury oddzielone spacją (np. C 2, F 23): ");
+      string input = Console.ReadLine();
+
+      string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+      if (parts.Length != 2)
+      {
+        Console.WriteLine("Błąd: Niepoprawna ilość argumentów.");
+        return;
+      }
+
+      if (!double.TryParse(parts[1], out double num))
+      {
+        Console.WriteLine("Błąd: Niepoprawna wartość temperatury.");
+        return;
+      }
+
+      string destination = parts[0];
+
+      if (destination.Equals("c", StringComparison.OrdinalIgnoreCase))
+      {
+        Console.WriteLine($"Wynik: {num}°C = {num * 1.8 + 32}°F");
+      }
+      else if (destination.Equals("f", StringComparison.OrdinalIgnoreCase))
+      {
+        Console.WriteLine($"Wynik: {num}°F = {(num - 32) / 1.8}°C");
+      }
+      else
+      {
+        Console.WriteLine("Błąd: Niedozwolony kierunek konwersji.");
         return;
       }
     }
