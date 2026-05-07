@@ -1,7 +1,17 @@
 def main():
-  # Zad1()
-  # Zad2()
-  Zad3()
+  print("Wybierz zadanie (od 1 do 3):\n1 - Prosty kalkulator dwóch liczb\n2 - Konwerter temperatur (Celsjusz ↔ Fahrenheit)\n3 - Średnia ocen ucznia")
+
+  zad = input()
+
+  match zad:
+    case "1":
+      Zad1()
+    case "2":
+      Zad2()
+    case "3":
+      Zad3()
+    case _:
+      return
 
 def Zad1():
   user_input = input("Podaj dwie liczby i znak operacji (+, -, * lub /) oddzielone spacją (np. 10 20 +): ")
