@@ -1,6 +1,7 @@
 def main():
   # Zad1()
-  Zad2()
+  # Zad2()
+  Zad3()
 
 def Zad1():
   user_input = input("Podaj dwie liczby i znak operacji (+, -, * lub /) oddzielone spacją (np. 10 20 +): ")
@@ -55,6 +56,41 @@ def Zad2():
     print(f"Wynik: {num}°F = {(num - 32) / 1.8}°C")
   else:
     print("Błąd: Niedozwolony kierunek konwersji.")
+
+def Zad3():
+  user_input = input("Podaj liczbę ocen (>0) oraz kolejne oceny ucznia (wartości od 1 do 6) oddzielone spacją (np. 4 5 3 4 2): ")
+  parts = user_input.split()
+
+  try:
+    length = int(parts[0])
+  except (ValueError, IndexError):
+    print("Błąd: Niepoprawna liczba ocen do wprowadzenia.")
+    return
+  
+  if len(parts) != (length + 1) or length == 0:
+    print("Błąd: Niepoprawna ilość ocen.")
+    return
+  
+  sum = 0
+
+  for i in range(1, length + 1):
+    try:
+      grade = int(parts[i])
+    except ValueError:
+      print("Błąd: Niepoprawna wartość jednej z ocen.")
+      return
+    
+    if grade < 1 or grade > 6:
+      print("Błąd: Niepoprawna wartość jednej z ocen.")
+      return
+    
+    sum += grade
+
+  result = sum / length
+  if result >= 3.0:
+    print(f"Średnia: {result}\nUczeń zdał.")
+  else:
+    print(f"Średnia: {result}\nUczeń nie zdał.")
 
 if __name__ == "__main__":
   main()
